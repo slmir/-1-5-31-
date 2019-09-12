@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ЛР1_Мирсонов_РТ5_31Б
-{
+{ 
 	class Program
 	{
 		static double Dec(double a, double b, double c)//вычисление и проверка дескриминанта
