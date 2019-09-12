@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ЛР1 Мирсонов РТ5-31Б", "ЛР1 Мирсонов РТ5-31Б\ЛР1 Мирсонов РТ5-31Б.csproj", "{A8B6EF65-0FF5-4061-AAD1-CAB4FDCB279E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8B6EF65-0FF5-4061-AAD1-CAB4FDCB279E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8B6EF65-0FF5-4061-AAD1-CAB4FDCB279E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8B6EF65-0FF5-4061-AAD1-CAB4FDCB279E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8B6EF65-0FF5-4061-AAD1-CAB4FDCB279E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A47742B6-B5E9-4DA5-8353-4D1306CBA41E}
+	EndGlobalSection
+EndGlobal
