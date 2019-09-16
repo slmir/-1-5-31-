@@ -16,7 +16,6 @@ namespace ЛР1_Мирсонов_РТ5_31Б
 			else
 			{
 				NoDecision();
-				System.Diagnostics.Process.GetCurrentProcess().Kill();//остановка выполнения, так как решений нет
 				return 0;
 			}
 		}
@@ -54,7 +53,7 @@ namespace ЛР1_Мирсонов_РТ5_31Б
 				x2 = 0;
 				Console.WriteLine("Решения: x1 = {0}", x1);
 				Console.ReadLine();
-				System.Diagnostics.Process.GetCurrentProcess().Kill();//остановка выполнения, так как решений нет
+				System.Diagnostics.Process.GetCurrentProcess().Kill();//остановка выполнения, так как решения обработаны
 			}
 			if (y1 != 0 && y2 != 0)//2 или больше возможных решений
 			{
@@ -67,13 +66,13 @@ namespace ЛР1_Мирсонов_РТ5_31Б
 			{
 				Console.WriteLine("Решения: x1 = {0}, x2 = {1}", x1, x2);
 				Console.ReadLine();
-				System.Diagnostics.Process.GetCurrentProcess().Kill();//остановка выполнения, так как решений нет
+				System.Diagnostics.Process.GetCurrentProcess().Kill();//остановка выполнения, так как решения обработаны
 			}
 			if (y1 < 0 && y2 >= 0)
 			{
 				Console.WriteLine("Решения: x1 = {0}, x2 = {1}", x3, x4);
 				Console.ReadLine();
-				System.Diagnostics.Process.GetCurrentProcess().Kill();//остановка выполнения, так как решений нет
+				System.Diagnostics.Process.GetCurrentProcess().Kill();//остановка выполнения, так как решения обработаны
 			}
 			if (y1 >= 0 && y2 >= 0)
 				if (x1 == 0)
@@ -85,30 +84,16 @@ namespace ЛР1_Мирсонов_РТ5_31Б
 		}
 		static bool Check(string A)//проверка корректности введеных коэффициентов
 		{
-			int count = 0;
-			int cProb = 0;
-			bool tf = false;
-			for (int i = 0; i < A.Length; i++)//проверка строки на наличие пробелов
-			{
-				if (A[i] == ' ')
-					cProb++;
-			}
-			for (int i = 0; i < A.Length; i++)//проверка строки на наличие допустимых символов
-			{
-				if ((A[i] >= '0' && A[i] <= '9') || A[i] == '-' || A[i] == '.')
-					count++;
-			}
-			if (count == A.Length && cProb == 0)//если вся строка состоит из допустимых символов без пробелов
-				tf = true;
-			if (tf == false)
-			{
+			double coeff;
+			if (Double.TryParse(A, out coeff))//возвращает значение булевого типа, если строку удалось преобразовать в число с плавающей точкой
+				return true;
+			else
+			{ 
 				Console.ForegroundColor = ConsoleColor.Red;
 				Console.WriteLine();
 				Console.WriteLine("Значение коэффициента введено некорректно, попробуйте еще раз");
 				return false;
 			}
-			else
-				return true;
 		}
 		static double Ent(char v)//ввод коэффициента, получает на вход символ обрабатываемого в данный моммент коэффициента
 		{
@@ -144,7 +129,9 @@ namespace ЛР1_Мирсонов_РТ5_31Б
 			Console.Title = "Мирсонов Вячеслав РТ5-31Б";
 			/*Ввод и проверка корректности коэффициентов*/
 			Console.WriteLine("Пожалуйста, введите коэфициенты биквадратного уравнения, используя символы:");
-			Console.WriteLine("0 1 2 3 4 5 6 7 8 9 '.' ''-' ");
+			Console.ForegroundColor = ConsoleColor.Green;
+			Console.WriteLine("0 1 2 3 4 5 6 7 8 9 ',' /* запятая */ '-' /* минус */ ");
+			Console.ForegroundColor = ConsoleColor.Gray;
 			Console.WriteLine();
 			double a = Ent('a');
 			double b = Ent('b');
@@ -159,7 +146,6 @@ namespace ЛР1_Мирсонов_РТ5_31Б
 				if (y1 < 0)
 					NoDecision();
 			}
-
 			if (b == 0 && a != 0)//есть коэффициент при х2
 			{
 				x = ((-1) * c) / a;
@@ -168,8 +154,15 @@ namespace ЛР1_Мирсонов_РТ5_31Б
 				if (x < 0)
 					NoDecision();
 			}
-			if (a == 0 && b == 0)//нулевые коэффициенты при х4, х2
+			if (a == 0 && b == 0 && c != 0)//нулевые коэффициенты при х4, х2
 				NoDecision();
+			if (a == 0 && b == 0 && c == 0)
+			{
+				Console.ForegroundColor = ConsoleColor.Green;
+				Console.WriteLine("Решений бесконечно много");
+				Console.ReadLine();
+				System.Diagnostics.Process.GetCurrentProcess().Kill();//остановка выполнения, так как решения обработаны
+			}
 			if (a != 0 && b != 0)//не нулевые коэффициенты при х4, х2
 			{
 				if (c == 0)
